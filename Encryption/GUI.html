@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data Encryptor</title>
+        <style>
+            .title {
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+            .header {
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 18pt;
+                font-weight: 200;
+            }
+
+            .button {
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 15pt;
+            }
+        </style>
+        <script type='text/javascript' src="Encryptor.js"></script>
+        <script>
+            var encryptor = new Encryptor();
+
+            function generateKey() {
+                var txtOutput = document.getElementById("txtOutput");
+                txtOutput.value = encryptor.randomKey();
+            }
+
+            function encryptData() {
+                var txtInput = document.getElementById("txtInput");
+                var keyInput = document.getElementById("keyInput");
+                var txtOutputEncrypt = document.getElementById("txtOutputEncrypt");
+                txtOutputEncrypt.value = encryptor.encryptData(txtInput, keyInput);
+            }
+        </script>
+    </head>
+
+    <body style="background-color: lightgray">
+        <h1 class="title">Data Encryptor!</h1>
+        <form>
+            <fieldset>
+                <h2 class = "header">Key Generator: </h2>
+                <input type = "button" class = "button" value = "Generate!" onclick = "generateKey()">
+                <input type = "text" id = "txtOutput">
+            </fieldset>
+        </form> <hr>
+        <form>
+            <fieldset>
+                <h2 class = "header">Text you want to encrypt: </h2>
+                <input type = "text" id = "txtInput">
+                <h2 class = "header">Key: </h2>
+                <input type = "text" id = "keyInput"> <br><br>
+                <input type = "button" class = "button" value = "Encrypt!" onclick = "encryptData()"> <br><br>
+                <input type = "text" id = "txtOutputEncrypt">
+            </fieldset>
+        </form> <hr>
+    </body>
+</html>
